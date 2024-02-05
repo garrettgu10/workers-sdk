@@ -1196,6 +1196,12 @@ importers:
       '@types/node':
         specifier: 20.8.3
         version: 20.8.3
+      capnp-ts:
+        specifier: ^0.7.0
+        version: 0.7.0(patch_hash=l4yimnxyvkiyj6alnps2ec3sii)
+      capnpc-ts:
+        specifier: ^0.7.0
+        version: 0.7.0
       undici:
         specifier: ^5.28.1
         version: 5.28.2
