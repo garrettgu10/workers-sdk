@@ -47,6 +47,7 @@ export const ApplyHandler = withConfig<ApplyHandlerOptions>(
 		config,
 		database,
 		local,
+		remote,
 		persistTo,
 		preview,
 		batchSize,
@@ -158,6 +159,7 @@ Your database may not be available to serve requests during the migration, conti
 			try {
 				const response = await executeSql({
 					local,
+					remote,
 					config,
 					name: database,
 					shouldPrompt: isInteractive() && !CI.isCI(),
