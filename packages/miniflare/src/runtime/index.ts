@@ -10,6 +10,7 @@ import workerdPath, {
 import { z } from "zod";
 import { SERVICE_LOOPBACK, SOCKET_ENTRY } from "../plugins";
 import { Awaitable } from "../workers";
+import findCacheDirectory from 'find-cache-dir';
 
 const ControlMessageSchema = z.discriminatedUnion("event", [
 	z.object({
@@ -93,6 +94,10 @@ function getRuntimeCommand() {
 	return process.env.MINIFLARE_WORKERD_PATH ?? workerdPath;
 }
 
+function getCacheDir() {
+	return findCacheDirectory({name: "workerd"});
+}
+
 function getRuntimeArgs(options: RuntimeOptions) {
 	const args: string[] = [
 		"serve",
@@ -105,6 +110,8 @@ function getRuntimeArgs(options: RuntimeOptions) {
 		`--external-addr=${SERVICE_LOOPBACK}=${options.loopbackAddress}`,
 		// Configure extra pipe for receiving control messages (e.g. when ready)
 		"--control-fd=3",
+		// Configure disk cache directory (used for e.g. Python wheels and snapshots)
+		`--disk-cache-dir=${getCacheDir()}`,
 		// Read config from stdin
 		"-",
 	];

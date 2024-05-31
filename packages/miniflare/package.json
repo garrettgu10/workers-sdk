@@ -46,10 +46,11 @@
 		"acorn-walk": "^8.2.0",
 		"capnp-ts": "^0.7.0",
 		"exit-hook": "^2.2.1",
+		"find-cache-dir": "^5.0.0",
 		"glob-to-regexp": "^0.4.1",
 		"stoppable": "^1.1.0",
 		"undici": "^5.28.2",
-		"workerd": "1.20240405.0",
+		"workerd": "1.20240529.0",
 		"ws": "^8.11.0",
 		"youch": "^3.2.2",
 		"zod": "^3.20.6"
